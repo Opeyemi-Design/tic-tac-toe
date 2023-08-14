@@ -4,13 +4,14 @@ class TicTacToe
   def initialize
     @board = Array.new(3) { Array.new(3, "") }
     @players = [Player.new("X"), Player.new("O")]
+    @turn = 0
   end
 
   def play
     until game_over?
       display_board
       current_player = players[turn]
-      current_player.make_move(board, turn)
+      current_player.make_move(board)
       switch_turn
     end
 
@@ -55,7 +56,7 @@ class TicTacToe
       @symbol = symbol
     end
 
-    def make_move(board, turn)
+    def make_move(board)
       puts "#{symbol}, it's your turn. Enter a number from 1 to 9 to make your move."
       move = gets.chomp.to_i
       while move < 1 || move > 9 || board[move - 1] != ""
