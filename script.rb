@@ -59,12 +59,12 @@ class TicTacToe
     def make_move(board)
       puts "#{symbol}, it's your turn. Enter a number from 1 to 9 to make your move."
       move = gets.chomp.to_i
-      while move < 1 || move > 9 || board[move - 1] != ""
+      while move < 1 || move > 9 || board[(move - 1) / 3][(move - 1) % 3] != ""
         puts "Invalid move. Enter a number from 1 to 9 to make your move."
         move = gets.chomp.to_i
       end
 
-      board[move - 1] = symbol
+      board[(move - 1) / 3][(move - 1) % 3] = symbol
     end
   end
 
